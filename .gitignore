@@ -1,0 +1,4 @@
+venv/
+.env
+blog.db
+__pycache__
