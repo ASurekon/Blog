@@ -13,10 +13,10 @@ class PostBase(PostCreate):
     id: int
     likes: int
     dislikes: int
-    comments: int
-    owner_id: int
-    public_date: datetime
-    updated_at: datetime = None
+    is_active: bool = True
+    author_id: int
+    created_at: datetime
+    updated_at: Optional[datetime] = None
 
 
 
@@ -26,13 +26,13 @@ class PostUpdate(BaseModel):
 
 
 
-class PostResponse(PostCreate):
+class PostResponse(PostBase):
     pass
 
 
 
 class CommentPost(BaseModel):
-    test: str
+    text: str
 
 
 class CommentUpdate(CommentPost):
@@ -41,8 +41,8 @@ class CommentUpdate(CommentPost):
 
 class CommentBase(CommentPost):
     id: int
-    commentator_id: int
+    author_id: int
     likes: int
     post_id: int
-    commented_at: datetime
-    updated_at: datetime
+    created_at: datetime
+    # updated_at: datetime

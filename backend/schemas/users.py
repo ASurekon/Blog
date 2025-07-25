@@ -17,12 +17,17 @@ class UserCreate(UserBase):
     password2: str = Field(..., min_length=4)
 
 
-
-class UserInDB(UserBase):
+class UserResponse(UserBase):
     id: int
-    hashed_password: str
     created_at: datetime
-    role_id: int
+    is_active: bool = True
+
+    class Config:
+        from_atributes = True
+
+
+class UserInDB(UserResponse):
+    hashed_password: str
 
 
 
